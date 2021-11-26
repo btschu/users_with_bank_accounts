@@ -24,7 +24,7 @@ class User:
     def example_method(self):
         self.account.deposit(100)		# we can call the BankAccount instance's methods
     	print(self.account.balance)		# or access its attributes
-      ```
+```
   
 # Tasks
 
