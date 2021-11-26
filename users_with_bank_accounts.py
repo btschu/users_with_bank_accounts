@@ -32,9 +32,7 @@ class User:
     def __init__(self, name, email, type):
         self.name = name
         self.email = email
-        self.type = type
         self.accounts = {type: BankAccount(int_rate = 0.03, balance = 0)}
-
     def make_deposit(self, amount, type):
         self.accounts[type].deposit(amount)
         return self
@@ -57,12 +55,11 @@ class User:
 
 
 brandon = User('Brandon Schumacher', 'brandon@gmail.com', 'Savings Account')
-print(brandon)
 brandon.make_deposit(200, 'Savings Account')
 brandon.display_user_balance('Savings Account')
 brandon.open_new_account('Checking Account')
-print(brandon.accounts)
 brandon.open_new_account('Checking Account')
-print(brandon.accounts)
 brandon.make_deposit(1000, 'Checking Account')
 brandon.display_user_balance('Checking Account')
+
+BankAccount.all_info()
