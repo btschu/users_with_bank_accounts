@@ -36,4 +36,4 @@ class User:
 
 - [X] Update the User class display_user_balance method
 
-- [ ] SENSEI BONUS: Allow a user to have multiple accounts; update methods so the user has to specify which account they are withdrawing or depositing to
+- [X] SENSEI BONUS: Allow a user to have multiple accounts; update methods so the user has to specify which account they are withdrawing or depositing to

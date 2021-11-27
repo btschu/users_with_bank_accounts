@@ -40,7 +40,7 @@ class User:
         self.accounts[type].withdraw(amount)
         return self
     def display_user_balance(self, type):
-        print(self.name, type, self.accounts[type].balance)
+        print(f"Member Name: {self.name}, Account Type: {type}, Balance: {self.accounts[type].balance}")
         return self
     def transfer_money(self, type, other_user, other_user_type, amount):
         self.accounts[type].withdraw(amount)
@@ -53,13 +53,7 @@ class User:
             print('account of this type already exists')
         return self
 
-
 brandon = User('Brandon Schumacher', 'brandon@gmail.com', 'Savings Account')
-brandon.make_deposit(200, 'Savings Account')
-brandon.display_user_balance('Savings Account')
-brandon.open_new_account('Checking Account')
-brandon.open_new_account('Checking Account')
-brandon.make_deposit(1000, 'Checking Account')
-brandon.display_user_balance('Checking Account')
+brandon.make_deposit(200, 'Savings Account').open_new_account('Checking Account').make_deposit(1000, 'Checking Account').open_new_account('Checking Account').make_withdraw(50, "Checking Account").make_withdraw(49, "Savings Account").display_user_balance("Savings Account").display_user_balance("Checking Account")
 
 BankAccount.all_info()
