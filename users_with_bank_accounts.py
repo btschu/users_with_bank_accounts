@@ -15,8 +15,7 @@ class BankAccount:
             self.balance -= amount
         return self
     def display_account_info(self):
-        print("Balance:", self.balance)
-        return self
+        return self.balance
     def yield_interest(self):
         if self.balance > 0:
             self.balance = self.balance * (1 + self.int_rate)
@@ -32,33 +31,25 @@ class User:
     def __init__(self, name, email, type):
         self.name = name
         self.email = email
-        self.accounts = {type: BankAccount(int_rate = 0.03, balance = 0)}
-    def make_deposit(self, amount, type):
-        self.accounts[type].deposit(amount)
-        return self
-    def make_withdraw(self, amount, type):
-        self.accounts[type].withdraw(amount)
-        return self
-    def display_user_balance(self, type):
-        print(f"Member Name: {self.name}, Account Type: {type}, Balance: {self.accounts[type].balance}")
+        self.account = {
+            "Checking Account" : BankAccount(.01,800),
+            "Savings Account" : BankAccount(.03,2000)
+        }
+    def display_user_balance(self):
+        print(f"Member Name: {self.name}, Checking Account Balance: {self.account['Checking Account'].display_account_info()}")
+        print(f"Member Name: {self.name}, Savings Account Balance: {self.account['Savings Account'].display_account_info()}")
         return self
     def transfer_money(self, type, other_user, other_user_type, amount):
         self.accounts[type].withdraw(amount)
         other_user.accounts[other_user_type].deposit(amount)
         return self
-    def open_new_account(self, type):
-        if type not in self.accounts:
-            self.accounts[type] = BankAccount(int_rate = 0.03, balance = 0)
-        else:
-            print('account of this type already exists')
-        return self
 
 brandon = User('Brandon Schumacher', 'brandon@gmail.com', 'Savings Account')
-brandon.make_deposit(200, 'Savings Account').open_new_account('Checking Account').make_deposit(1000, 'Checking Account').open_new_account('Checking Account').make_withdraw(50, "Checking Account").make_withdraw(49, "Savings Account").display_user_balance("Savings Account").display_user_balance("Checking Account")
+brandon.account["Checking Account"].deposit(200).withdraw(200).withdraw(32)
+brandon.account["Savings Account"].deposit(350).withdraw(50).deposit(5000)
+brandon.display_user_balance()
 
-BankAccount.all_info()
-
-#! Instructor's Solution 
+#! Instructor's Solution
 
 # class BankAccount:
 #     accounts = []
